@@ -1,7 +1,7 @@
 import { ITrabajo } from "models/trabajo";
 export class Trabajo {
     Id?: number;
-    Tiulo: string;
+    Titulo: string;
     Descripcion: string;
     Salario: number;
     Direccion: string;
@@ -13,7 +13,7 @@ export class Trabajo {
 
     constructor(trabajo: ITrabajo) {
         this.Id = trabajo.Id;
-        this.Tiulo = trabajo.Tiulo;
+        this.Titulo = trabajo.Titulo;
         this.Descripcion = trabajo.Descripcion;
         this.Salario = trabajo.Salario;
         this.Direccion = trabajo.Direccion;

@@ -3,7 +3,7 @@ import connection from '../services/mysql';
 
 export interface ITrabajo {
     Id?: number;
-    Tiulo: string;
+    Titulo: string;
     Descripcion: string;
     Salario: number;
     Direccion: string;
@@ -32,7 +32,7 @@ class Trabajos {
     //rescatar los trabajos de una empresa
     conseguirTrabajosCreados(EmpresaId: number) {
         return new Promise(async (resolve, reject) => {
-            connection.query(`SELECT * FROM trabajo WHERE Estatus = 1 AND EmpresaId = ?`,
+            connection.query(`SELECT * FROM trabajo WHERE Estatus = 1 AND Empresa_Id = ?`,
                 [EmpresaId],
                 async (err: any, results: any) => {
                     if (err) {
@@ -47,7 +47,7 @@ class Trabajos {
     agregarTrabajo(trabajo: ITrabajo) {
         return new Promise(async (resolve, reject) => {
             connection.query(`CALL InsertarTrabajo(?,?,?,?,?,?,?,?)`,
-                [trabajo.Tiulo, trabajo.Descripcion, trabajo.Salario, trabajo.Direccion, trabajo.Tiempo,  trabajo.Contrato, trabajo.Modalidad, trabajo.EmpresaId],
+                [trabajo.Titulo, trabajo.Descripcion, trabajo.Salario, trabajo.Direccion, trabajo.Tiempo,  trabajo.Contrato, trabajo.Modalidad, trabajo.EmpresaId],
                 async (err: any, results: any) => {
                     if (err) {
                         reject(err);
@@ -60,8 +60,8 @@ class Trabajos {
 
     actualizarTrabajo(trabajo: ITrabajo) {
         return new Promise(async (resolve, reject) => {
-            connection.query(`CALL ActualizarTrabajo(?,?,?,?,?,?,?,?)`,
-                [trabajo.Id, trabajo.Tiulo, trabajo.Descripcion, trabajo.Salario, trabajo.Direccion, trabajo.Tiempo, trabajo.Contrato, trabajo.Modalidad, trabajo.EmpresaId],
+            connection.query(`CALL ActualizarTrabajo(?,?,?,?,?,?,?,?,?)`,
+                [trabajo.Id, trabajo.Titulo, trabajo.Descripcion, trabajo.Salario, trabajo.Direccion, trabajo.Tiempo, trabajo.Contrato, trabajo.Modalidad, trabajo.EmpresaId],
                 async (err: any, results: any) => {
                     if (err) {
                         reject(err);

@@ -1,5 +1,6 @@
 import Database from '../services/database';
 import connection from '../services/mysql';
+import Login from './login';
 
 
 export interface IUsuario {
@@ -29,7 +30,9 @@ class Usuarios extends Database {
                     if (err) {
                         reject(err);
                     }
-                    resolve(results);
+                    const login = new Login();
+                    const newLogin = await login.login(usuario.Email, usuario.Contrasenia);
+                    resolve(newLogin);
                 }
             );
         });
