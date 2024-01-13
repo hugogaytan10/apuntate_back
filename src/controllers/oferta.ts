@@ -14,7 +14,7 @@ export class Controller {
     }
     async conseguirOfertas(req: Request, res: Response) {
         try {
-            const newOferta = await oferta.conseguirOfertas(req.body);
+            const newOferta = await oferta.conseguirOfertas(req.body.id);
             res.status(200).json(newOferta);
         } catch (error) {
             res.status(400).json(error);

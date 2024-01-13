@@ -49,4 +49,13 @@ export class Controller {
             res.status(400).json(error);
         }
     }
+    //buscar trabajo con texto
+    async buscarTrabajo(req: Request, res: Response) {
+        try {
+            const trabajo = await trabajoModel.buscarTrabajoConTexto(req.body.texto);
+            res.status(200).json(trabajo);
+        } catch (error) {
+            res.status(400).json(error);
+        }
+    }
 }

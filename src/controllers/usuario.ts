@@ -19,5 +19,13 @@ export class Controller {
         } catch (error) {
             res.status(400).json(error);
         }
-    }                                                                                 
+    }                       
+    async InformacionUsuarioPostulado(req: Request, res: Response) {
+        try {
+            const newUsuario = await usuario.conseguirInformacionUsuario(req.body.id);
+            res.status(200).json(newUsuario);
+        } catch (error) {
+            res.status(400).json(error);
+        }
+    }                                                          
 }

@@ -89,7 +89,7 @@ class Trabajos {
     //buscar trabajos similares a los que busco el usuario 
     buscarTrabajoConTexto(texto: string) {
         return new Promise(async (resolve, reject) => {
-            connection.query(`SELECT * FROM trabajo WHERE Estatus = 1 AND Tiulo LIKE ?`,
+            connection.query(`SELECT * FROM trabajo WHERE Estatus = 1 AND Titulo LIKE ?`,
                 ['%' + texto + '%'],
                 async (err: any, results: any) => {
                     if (err) {
