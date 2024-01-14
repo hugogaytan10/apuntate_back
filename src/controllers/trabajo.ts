@@ -43,7 +43,7 @@ export class Controller {
     // da de baja un trabajo
     async eliminarTrabajo(req: Request, res: Response) {
         try {
-            const trabajo = await trabajoModel.eliminarTrabajo(req.body);
+            const trabajo = await trabajoModel.eliminarTrabajo(req.body.Id);
             res.status(200).json(trabajo);
         } catch (error) {
             res.status(400).json(error);

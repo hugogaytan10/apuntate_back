@@ -73,10 +73,10 @@ class Trabajos {
         });
     }
 
-    eliminarTrabajo(trabajo: ITrabajo) {
+    eliminarTrabajo(id: number) {
         return new Promise(async (resolve, reject) => {
             connection.query(`UPDATE trabajo SET Estatus = 0 WHERE Id = ? `,
-                [trabajo.Id],
+                [id],
                 async (err: any, results: any) => {
                     if (err) {
                         reject(err);
