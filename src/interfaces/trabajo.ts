@@ -5,6 +5,7 @@ export class Trabajo {
     Descripcion: string;
     Salario: number;
     Direccion: string;
+    Ciudad: string;
     Tiempo: string;
     Estatus: number;
     Contrato: string;
@@ -17,6 +18,7 @@ export class Trabajo {
         this.Descripcion = trabajo.Descripcion;
         this.Salario = trabajo.Salario;
         this.Direccion = trabajo.Direccion;
+        this.Ciudad = trabajo.Ciudad;
         this.Tiempo = trabajo.Tiempo;
         this.Estatus = trabajo.Estatus;
         this.Contrato = trabajo.Contrato;

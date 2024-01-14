@@ -8,6 +8,7 @@ export class Usuario {
     Contrasenia: string;
     Telefono: string;
     Direccion: string;
+    Ciudad: string;
     EstadoCivil: string;
     FechaNac: string;
     EmpresaId?: number;
@@ -20,6 +21,7 @@ export class Usuario {
         this.Contrasenia = usuario.Contrasenia;
         this.Telefono = usuario.Telefono;
         this.Direccion = usuario.Direccion;
+        this.Ciudad = usuario.Ciudad;
         this.EstadoCivil = usuario.EstadoCivil;
         this.FechaNac = usuario.FechaNac;
         this.EmpresaId = usuario.EmpresaId;

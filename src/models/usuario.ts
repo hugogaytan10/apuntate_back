@@ -11,6 +11,7 @@ export interface IUsuario {
     Contrasenia: string;
     Telefono: string;
     Direccion: string;
+    Ciudad: string;
     EstadoCivil: string;
     FechaNac: string;
     EmpresaId?: number;
@@ -24,15 +25,19 @@ class Usuarios extends Database {
 
     agregarUsuario(usuario: IUsuario) {
         return new Promise(async (resolve, reject) => {
-            connection.query(`CALL insertarUsuario(?,?,?,?,?,?,?,?)`,
-                [usuario.Email, usuario.Contrasenia, usuario.FechaNac, usuario.Apellido, usuario.Nombre, usuario.Direccion, usuario.Telefono, usuario.EstadoCivil],
+            connection.query(`CALL insertarUsuario(?,?,?,?,?,?,?,?,?)`,
+                [usuario.Email, usuario.Contrasenia, usuario.FechaNac, usuario.Apellido, usuario.Nombre, usuario.Direccion, usuario.Ciudad, usuario.Telefono, usuario.EstadoCivil],
                 async (err: any, results: any) => {
                     if (err) {
                         reject(err);
                     }
-                    const login = new Login();
-                    const newLogin = await login.login(usuario.Email, usuario.Contrasenia);
-                    resolve(newLogin);
+                    try{
+                        const login = new Login();
+                        const newLogin = await login.login(usuario.Email, usuario.Contrasenia);
+                        resolve(newLogin);
+                    }catch(error){
+                        reject(error);
+                    }
                 }
             );
         });
@@ -40,8 +45,8 @@ class Usuarios extends Database {
 
     actualizarUsuario(usuario: IUsuario) {
         return new Promise(async (resolve, reject) => {
-            connection.query(`CALL ActualizarUsuario(?,?,?,?,?,?,?,?,?)`,
-                [usuario.Id, usuario.Email, usuario.Contrasenia, usuario.FechaNac, usuario.Apellido, usuario.Nombre, usuario.Direccion, usuario.Telefono, usuario.EstadoCivil],
+            connection.query(`CALL ActualizarUsuario(?,?,?,?,?,?,?,?,?,?)`,
+                [usuario.Id, usuario.Email, usuario.Contrasenia, usuario.FechaNac, usuario.Apellido, usuario.Nombre, usuario.Direccion, usuario.Ciudad, usuario.Telefono, usuario.EstadoCivil],
                 async (err: any, results: any) => {
                     if (err) {
                         reject(err);
@@ -54,8 +59,8 @@ class Usuarios extends Database {
 
     agregarUsuarioEmpresa(usuario: IUsuario) {
         return new Promise(async (resolve, reject) => {
-            connection.query(`CALL insertarUsuarioEmpresa(?,?,?,?,?,?,?,?,?)`,
-                [usuario.Email, usuario.Contrasenia, usuario.FechaNac, usuario.Apellido, usuario.Nombre, usuario.Direccion, usuario.Telefono, usuario.EstadoCivil, usuario.EmpresaId],
+            connection.query(`CALL insertarUsuarioEmpresa(?,?,?,?,?,?,?,?,?,?)`,
+                [usuario.Email, usuario.Contrasenia, usuario.FechaNac, usuario.Apellido, usuario.Nombre, usuario.Direccion, usuario.Ciudad, usuario.Telefono, usuario.EstadoCivil, usuario.EmpresaId],
                 async (err: any, results: any) => {
                     if (err) {
                         reject(err);

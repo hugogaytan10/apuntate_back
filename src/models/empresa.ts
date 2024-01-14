@@ -10,6 +10,7 @@ export interface IEmpresa {
     Contrasenia: string;
     Telefono: string;
     Direccion: string;
+    Ciudad: string;
     EstadoCivil: string;
     FechaNac: string;
     EmpresaId?: number;
@@ -24,8 +25,8 @@ class Empresas{
 
     agregarempresa(empresa: IEmpresa) {
         return new Promise(async (resolve, reject) => {
-            connection.query(`CALL InsertarUsuarioEmpresa(?,?,?,?,?,?,?,?,?,?,?)`,
-                [empresa.NombreEmpresa, empresa.Giro, empresa.RFC, empresa.Email, empresa.Contrasenia, empresa.FechaNac, empresa.Apellido, empresa.Nombre, empresa.Direccion, empresa.Telefono, empresa.EstadoCivil],
+            connection.query(`CALL InsertarUsuarioEmpresa(?,?,?,?,?,?,?,?,?,?,?,?)`,
+                [empresa.NombreEmpresa, empresa.Giro, empresa.RFC, empresa.Email, empresa.Contrasenia, empresa.FechaNac, empresa.Apellido, empresa.Nombre, empresa.Direccion, empresa.Ciudad, empresa.Telefono, empresa.EstadoCivil],
                 async (err: any, results: any) => {
                     if (err) {
                         reject(err);
@@ -43,8 +44,8 @@ class Empresas{
 
     actualizarempresa(empresa: IEmpresa) {
         return new Promise(async (resolve, reject) => {
-            connection.query(`CALL Actualizarempresa(?,?,?,?,?,?,?,?,?,?,?,?,?)`,
-                [empresa.Id,empresa.EmpresaId,empresa.NombreEmpresa,empresa.Giro, empresa.RFC, empresa.Email, empresa.Contrasenia, empresa.FechaNac, empresa.Apellido, empresa.Nombre, empresa.Direccion, empresa.Telefono, empresa.EstadoCivil],
+            connection.query(`CALL Actualizarempresa(?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+                [empresa.Id,empresa.EmpresaId,empresa.NombreEmpresa,empresa.Giro, empresa.RFC, empresa.Email, empresa.Contrasenia, empresa.FechaNac, empresa.Apellido, empresa.Nombre, empresa.Direccion, empresa.Ciudad, empresa.Telefono, empresa.EstadoCivil],
                 async (err: any, results: any) => {
                     if (err) {
                         reject(err);
@@ -57,8 +58,8 @@ class Empresas{
 
     agregarempresaEmpresa(empresa: IEmpresa) {
         return new Promise(async (resolve, reject) => {
-            connection.query(`CALL InsertarUsuarioEmpresa(?,?,?,?,?,?,?,?,?)`,
-                [empresa.NombreEmpresa,empresa.Giro, empresa.RFC, empresa.Email, empresa.Contrasenia, empresa.FechaNac, empresa.Apellido, empresa.Nombre, empresa.Direccion, empresa.Telefono, empresa.EstadoCivil, empresa.EmpresaId],
+            connection.query(`CALL InsertarUsuarioEmpresa(?,?,?,?,?,?,?,?,?,?)`,
+                [empresa.NombreEmpresa,empresa.Giro, empresa.RFC, empresa.Email, empresa.Contrasenia, empresa.FechaNac, empresa.Apellido, empresa.Nombre, empresa.Direccion, empresa.Ciudad, empresa.Telefono, empresa.EstadoCivil, empresa.EmpresaId],
                 async (err: any, results: any) => {
                     if (err) {
                         reject(err);

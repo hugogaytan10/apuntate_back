@@ -7,6 +7,7 @@ export interface ITrabajo {
     Descripcion: string;
     Salario: number;
     Direccion: string;
+    Ciudad: string;
     Tiempo: string;
     Estatus: number;
     Contrato: string;
@@ -46,8 +47,8 @@ class Trabajos {
 
     agregarTrabajo(trabajo: ITrabajo) {
         return new Promise(async (resolve, reject) => {
-            connection.query(`CALL InsertarTrabajo(?,?,?,?,?,?,?,?)`,
-                [trabajo.Titulo, trabajo.Descripcion, trabajo.Salario, trabajo.Direccion, trabajo.Tiempo,  trabajo.Contrato, trabajo.Modalidad, trabajo.EmpresaId],
+            connection.query(`CALL InsertarTrabajo(?,?,?,?,?,?,?,?,?)`,
+                [trabajo.Titulo, trabajo.Descripcion, trabajo.Salario, trabajo.Direccion, trabajo.Ciudad, trabajo.Tiempo,  trabajo.Contrato, trabajo.Modalidad, trabajo.EmpresaId],
                 async (err: any, results: any) => {
                     if (err) {
                         reject(err);
@@ -60,8 +61,8 @@ class Trabajos {
 
     actualizarTrabajo(trabajo: ITrabajo) {
         return new Promise(async (resolve, reject) => {
-            connection.query(`CALL ActualizarTrabajo(?,?,?,?,?,?,?,?,?)`,
-                [trabajo.Id, trabajo.Titulo, trabajo.Descripcion, trabajo.Salario, trabajo.Direccion, trabajo.Tiempo, trabajo.Contrato, trabajo.Modalidad, trabajo.EmpresaId],
+            connection.query(`CALL ActualizarTrabajo(?,?,?,?,?,?,?,?,?,?)`,
+                [trabajo.Id, trabajo.Titulo, trabajo.Descripcion, trabajo.Salario, trabajo.Direccion,trabajo.Ciudad, trabajo.Tiempo, trabajo.Contrato, trabajo.Modalidad, trabajo.EmpresaId],
                 async (err: any, results: any) => {
                     if (err) {
                         reject(err);
