@@ -5,6 +5,7 @@ const routes = Router();
 const controller = new Controller();
 routes.get('/trabajos', controller.conseguirTrabajos);
 routes.get('/trabajos/ciudades', controller.buscarCiudades);
+routes.get('/trabajos/buscarTextoCiudad', controller.buscarTrabajoConTextoYCiudad);
 routes.post('/trabajo/buscar', controller.buscarTrabajo);
 routes.post('/trabajos', checkJwt.checkJWT, controller.conseguirTrabajosCreados);
 routes.post('/trabajo/agregar', checkJwt.checkJWT, controller.agregarTrabajo);
