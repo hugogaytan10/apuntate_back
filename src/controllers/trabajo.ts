@@ -49,6 +49,15 @@ export class Controller {
             res.status(400).json(error);
         }
     }
+    //buscar ciudades de los trabajos
+    async buscarCiudades(req: Request, res: Response) {
+        try {
+            const trabajo = await trabajoModel.buscarCiudades();
+            res.status(200).json(trabajo);
+        } catch (error) {
+            res.status(400).json(error);
+        }
+    }
     //buscar trabajo con texto
     async buscarTrabajo(req: Request, res: Response) {
         try {

@@ -87,6 +87,20 @@ class Trabajos {
         });
     }
 
+    //buscar las ciudades de los trabajos
+    buscarCiudades(){
+        return new Promise(async (resolve, reject) => {
+            connection.query(`SELECT DISTINCT Ciudad FROM trabajo WHERE Estatus = 1`,
+                async (err: any, results: any) => {
+                    if (err) {
+                        reject(err);
+                    }
+                    resolve(results);
+                }
+            );
+        }); 
+    }
+
     //buscar trabajos similares a los que busco el usuario 
     buscarTrabajoConTexto(texto: string) {
         return new Promise(async (resolve, reject) => {
