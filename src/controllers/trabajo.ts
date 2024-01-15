@@ -13,6 +13,15 @@ export class Controller {
             res.status(400).json(error);
         }
     }
+    //conseguir trabajo por rangos
+    async conseguirTrabajosPorRango(req: Request, res: Response) {
+        try {
+            const trabajos = await trabajoModel.conseguirTrabajosRango(req.body.inicio, req.body.fin);
+            res.status(200).json(trabajos);
+        } catch (error) {
+            res.status(400).json(error);
+        }
+    }
     //retorna los trabajos de una empresa
     async conseguirTrabajosCreados(req: Request, res: Response) {
         try {
@@ -71,6 +80,15 @@ export class Controller {
     async buscarTrabajoConTextoYCiudad(req: Request, res: Response) {
         try {
             const trabajo = await trabajoModel.buscarTrabajoConTextoYCiudad(req.body.texto, req.body.ciudad);
+            res.status(200).json(trabajo);
+        } catch (error) {
+            res.status(400).json(error);
+        }
+    }
+    //buscar trabajo por ciudad y estatus activo
+    async buscarTrabajoConCiudad(req: Request, res: Response) {
+        try {
+            const trabajo = await trabajoModel.buscarTrabajoPorCiudad(req.body.ciudad);
             res.status(200).json(trabajo);
         } catch (error) {
             res.status(400).json(error);

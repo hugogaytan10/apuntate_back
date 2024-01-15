@@ -29,6 +29,21 @@ class Trabajos {
       );
     });
   }
+  //conseguir los trabajos entre un rango de dos limites 
+  conseguirTrabajosRango(inicio: number, fin: number) {
+    return new Promise(async (resolve, reject) => {
+      connection.query(
+        `SELECT * FROM trabajo WHERE Estatus = 1 limit ?,?`,
+        [inicio, fin],
+        async (err: any, results: any) => {
+          if (err) {
+            reject(err);
+          }
+          resolve(results);
+        }
+      );
+    });
+  }
 
   //rescatar los trabajos de una empresa
   conseguirTrabajosCreados(EmpresaId: number) {
@@ -149,6 +164,21 @@ class Trabajos {
       connection.query(
         `SELECT * FROM trabajo WHERE Estatus = 1 AND Titulo LIKE ? AND Ciudad Ciudad = ?`,
         ["%" + texto + "%", ciudad],
+        async (err: any, results: any) => {
+          if (err) {
+            reject(err);
+          }
+          resolve(results);
+        }
+      );
+    });
+  }
+  //buscar trabajo por ciudad y estatus activo 
+  buscarTrabajoPorCiudad(ciudad: string) {
+    return new Promise(async (resolve, reject) => {
+      connection.query(
+        `SELECT * FROM trabajo WHERE Estatus = 1 AND Ciudad = ?`,
+        [ciudad],
         async (err: any, results: any) => {
           if (err) {
             reject(err);

@@ -73,7 +73,7 @@ class Usuarios extends Database {
 
     conseguirInformacionUsuario(id: number) {
         return new Promise(async (resolve, reject) => {
-            connection.query(`SELECT CONCAT(Nombre, ' ', Apellido) AS Nombre, Telefono, Email, Direccion FROM usuario WHERE Id = ?`,
+            connection.query(`SELECT CONCAT(Nombre, ' ', Apellido) AS Nombre, Ciudad, Telefono, Email, Direccion FROM usuario WHERE Id = ?`,
                 [id],
                 async (err: any, results: any) => {
                     if (err) {

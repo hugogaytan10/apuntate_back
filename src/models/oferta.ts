@@ -22,6 +22,7 @@ class Ofertas {
             );
         });
     }
+   
 
     //rescatar las ofertas de un usuario
     conseguirOfertas(UsuarioId: number) {
