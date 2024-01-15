@@ -41,7 +41,7 @@ class Ofertas {
     //quitar la oferta de un usuario
     quitarOferta(UsuarioId: number, TrabajoId: number) {
         return new Promise(async (resolve, reject) => {
-            connection.query(`DELETE FROM oferta WHERE UsuarioId = ? AND TrabajoId = ?`,
+            connection.query(`DELETE FROM oferta WHERE Usuario_Id = ? AND Trabajo_Id = ?`,
                 [UsuarioId, TrabajoId],
                 async (err: any, results: any) => {
                     if (err) {
