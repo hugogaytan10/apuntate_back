@@ -31,7 +31,7 @@ class Login extends Database {
                 Telefono: results[0].Telefono,
                 Ciudad: results[0].Ciudad,
                 Contrasenia: "",
-                EmpresaId: results[0].EmpresaId,
+                Empresa_Id: results[0].Empresa_Id,
                 Direccion: results[0].Direccion,
                 EstadoCivil: results[0].EstadoCivil,
             }

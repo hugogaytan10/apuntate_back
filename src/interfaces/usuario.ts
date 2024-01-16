@@ -11,7 +11,7 @@ export class Usuario {
     Ciudad: string;
     EstadoCivil: string;
     FechaNac: string;
-    EmpresaId?: number;
+    Empresa_Id?: number;
 
     constructor(usuario: IUsuario) {
         this.Id = usuario.Id;
@@ -24,6 +24,6 @@ export class Usuario {
         this.Ciudad = usuario.Ciudad;
         this.EstadoCivil = usuario.EstadoCivil;
         this.FechaNac = usuario.FechaNac;
-        this.EmpresaId = usuario.EmpresaId;
+        this.Empresa_Id = usuario.EmpresaId;
     }
 } 
